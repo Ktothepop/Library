@@ -52,6 +52,10 @@ namespace Library
                 bookService.Edit(b);
             }
         }
-        
+
+    private void LibraryForm_Load(object sender, EventArgs e)
+    {
+
     }
+  }
 }
