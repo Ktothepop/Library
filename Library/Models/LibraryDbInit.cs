@@ -21,6 +21,7 @@ namespace Library.Models {
             {
                 Title = "The Goblet of Robots"
             };
+            //oh woops dont mind me
             context.Books.Add(BarryPotter);
             // Add the book to the DbSet of books.
             context.Books.Add(monteCristo);
