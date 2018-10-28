@@ -17,7 +17,11 @@ namespace Library.Models {
             Book monteCristo = new Book() {
                 Title = "The Count of Monte Cristo"
             };
-
+            Book BarryPotter = new Book()
+            {
+                Title = "The Goblet of Robots"
+            };
+            context.Books.Add(BarryPotter);
             // Add the book to the DbSet of books.
             context.Books.Add(monteCristo);
 
