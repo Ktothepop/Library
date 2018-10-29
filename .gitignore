@@ -1,3 +1,20 @@
-.vs/Library/v15/sqlite3/
-/DesignTimeResolveAssemblyReferencesInput.cache
-/Library.csproj.CoreCompileInputs.cache
+# Libraries
+*.lvlibp
+*.llb
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+
+# Metadata
+*.aliases
+*.lvlps
+.cache/
+.vs/
+Library/bin/Debug/
+Library/obj/Debug/
