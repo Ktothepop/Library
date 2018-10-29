@@ -7,19 +7,36 @@ using System.Threading.Tasks;
 
 namespace Library.Repositories
 {
-    class RepositoryFactory
+  class RepositoryFactory
+  {
+    private LibraryContext context;
+
+    /// <param name="c">A Librarycontext that will be shared among repositories</param>
+    public RepositoryFactory(LibraryContext c)
     {
-        private LibraryContext context;
-
-        /// <param name="c">A Librarycontext that will be shared among repositories</param>
-        public RepositoryFactory(LibraryContext c)
-        {
-            this.context = c;
-        }
-
-        public BookRepository CreateBookRepository()
-        {
-            return new BookRepository(context);
-        }
+      this.context = c;
     }
+
+    public BookRepository CreateBookRepository()
+    {
+      return new BookRepository(context);
+    }
+    public AuthorRepository CreateAuthorRepository()
+    {
+      return new AuthorRepository(context);
+    }
+    public BookCopyRepository CreateBookCopyRepository()
+    {
+      return new BookCopyRepository(context);
+    }
+    public LoanRepository CreateLoanRepository()
+    {
+      return new LoanRepository(context);
+    }
+    public MemberRepository CreateMemberRepository()
+    {
+      return new MemberRepository(context);
+    }
+
+  }
 }
