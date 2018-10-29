@@ -13,47 +13,45 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class LibraryForm : Form
+  public partial class LibraryForm : Form
+  {
+
+    BookService bookService;
+
+    public LibraryForm()
     {
+      InitializeComponent();
 
-        BookService bookService;
+      // we create only one context in our application, which gets shared among repositories
+      LibraryContext context = new LibraryContext();
+      // we use a factory object that will create the repositories as they are needed, it also makes
+      // sure all the repositories created use the same context.
+      RepositoryFactory repFactory = new RepositoryFactory(context);
 
-        public LibraryForm()
-        {
-            InitializeComponent();
+      this.bookService = new BookService(repFactory);
 
-            // we create only one context in our application, which gets shared among repositories
-            LibraryContext context = new LibraryContext();
-            // we use a factory object that will create the repositories as they are needed, it also makes
-            // sure all the repositories created use the same context.
-            RepositoryFactory repFactory = new RepositoryFactory(context);
+      ShowAllBooks(bookService.All());
+    }
 
-            this.bookService = new BookService(repFactory);
 
-            ShowAllBooks(bookService.All());
-        }
-        
+    private void ShowAllBooks(IEnumerable<Book> books)
+    {
+      lbBooks.Items.Clear();
+      foreach (Book book in books) {
+        lbBooks.Items.Add(book.Title + " " + " [5]");
+      }
+    }
 
-        private void ShowAllBooks(IEnumerable<Book> books)
-        {
-            lbBooks.Items.Clear();
-            foreach (Book book in books)
-            {
-                lbBooks.Items.Add(book);
-            }
-        }
+    
 
-        private void BTNChangeBook_Click(object sender, EventArgs e)
-        {
-            Book b = lbBooks.SelectedItem as Book;
-            if (b != null)
-            {
-                b.Title = "Yoyoma";
-                bookService.Edit(b);
-            }
-        }
+    
 
     private void LibraryForm_Load(object sender, EventArgs e)
+    {
+
+    }
+
+    private void testBtn_Click(object sender, EventArgs e)
     {
 
     }
