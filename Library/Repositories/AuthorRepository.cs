@@ -6,39 +6,38 @@ using Library.Models;
 
 namespace Library.Repositories
 {
-  public class BookRepository : IRepository<Book, int>
+  public class AuthorRepository : IRepository<Author, int>
   {
     LibraryContext context;
 
-    public BookRepository(LibraryContext c)
+    public AuthorRepository(LibraryContext c)
     {
       this.context = c;
     }
+
     //Samtliga funktioner här ska utnyttja Linq
     //ser ut såhär, frågan är om man gör en kontroll här eller tidigare? Borde kanske alltid kontrolleras?
-    public IEnumerable<Book> All()
+    public IEnumerable<Author> All()
     {
-      return context.Books;
+      return context.Authors;
     }
-
-    public void Edit(Book b)
+    public void Edit(Author a)
     {
       context.SaveChanges();
     }
-
-    public void Add(Book a)
+    public void Add(Author a)
     {
-      context.Books.Add(a);
+      context.Authors.Add(a);
       context.SaveChanges();
     }
-    public void Remove(Book a)
+    public void Remove(Author a)
     {
-      context.Books.Remove(a);
+      context.Authors.Remove(a);
       context.SaveChanges();
     }
-    public Book Find(int inID)
+    public Author Find(int inID)
     {
-      return context.Books.Find(inID);
+      return context.Authors.Find(inID);
     }
   }
 }

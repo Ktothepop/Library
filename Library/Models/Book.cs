@@ -15,10 +15,8 @@ namespace Library.Models
         [Required]
         public string ISBN { get; set; }
         public string Description { get; set; }
-        // vvarföör ska den vara virtual? undrar bara.
         public virtual Author Author { get; set; }
-        //"A book could have zero or more book copies" jag antar att vi måste göra en lista av dom ? Fast ska det vara av typen bookcopy eller book?
-        public ICollection<BookCopy> BookCopies = new List<BookCopy>();
+        public virtual ICollection<BookCopy> BookCopies { get; set; }
         /// <summary>
         /// Useful for adding the book objects directly to a ListBox.
         /// </summary>

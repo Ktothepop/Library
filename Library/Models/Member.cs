@@ -11,10 +11,10 @@ namespace Library.Models
   {
     [Key]
     public int Id { get; set; }
-    public int SSN { get; set; } 
+    [Required]
+    public int SSN { get; set; }
+    [Required]
     public string Name { get; set; }
-    //Ett till flera lån (lista med lån "ICollection<Loan> Loan { get; set; }" <- möjligtvis, så gör vi med Author
-    // I agree.
-    public ICollection<Loan> MemberLoan { get; set; }
+    public virtual ICollection<Loan> Loans { get; set; }
     }
 }
