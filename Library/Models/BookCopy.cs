@@ -12,5 +12,8 @@ namespace Library.Models
     [Key]
     public int Id { get; set; }
     //Behöver koppling till bok!
+    //"A book copy IS associated with a book" required eller?
+    [Required]
+    public Book Cbook { get; set; }
   }
 }

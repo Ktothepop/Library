@@ -14,5 +14,7 @@ namespace Library.Models
     public int SSN { get; set; } 
     public string Name { get; set; }
     //Ett till flera lån (lista med lån "ICollection<Loan> Loan { get; set; }" <- möjligtvis, så gör vi med Author
-  }
+    // I agree.
+    public ICollection<Loan> MemberLoan { get; set; }
+    }
 }

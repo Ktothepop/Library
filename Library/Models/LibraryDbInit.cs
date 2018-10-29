@@ -23,7 +23,7 @@ namespace Library.Models
       };
       Book BarryPotter = new Book() {
         Title = "The Goblet of Robots",
-        ISBN = "0132-6153-2312-9559"
+        ISBN = "0132-6153-2312-9589"
       };
       //oh woops dont mind me
       context.Books.Add(BarryPotter);
