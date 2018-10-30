@@ -8,15 +8,18 @@ using System.Threading.Tasks;
 
 namespace Library.Services
 {
-  class AuthorService
-  {
-    AuthorRepository authorRepository;
-
-    public AuthorService(RepositoryFactory rFactory)
+    class AuthorService
     {
-      this.authorRepository = rFactory.CreateAuthorRepository();
-    }
+        AuthorRepository authorRepository;
 
-  }
+        public AuthorService(RepositoryFactory rFactory)
+        {
+            this.authorRepository = rFactory.CreateAuthorRepository();
+        }
+        public IEnumerable<Author> All()
+        {
+            return authorRepository.All();
+        }
+    }
 
 }

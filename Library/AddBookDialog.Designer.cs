@@ -37,6 +37,7 @@
             this.buttonAddBook = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.AuthorsBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -114,11 +115,20 @@
             this.textBoxDescription.Size = new System.Drawing.Size(262, 22);
             this.textBoxDescription.TabIndex = 8;
             // 
+            // AuthorsBox
+            // 
+            this.AuthorsBox.FormattingEnabled = true;
+            this.AuthorsBox.Location = new System.Drawing.Point(227, 178);
+            this.AuthorsBox.Name = "AuthorsBox";
+            this.AuthorsBox.Size = new System.Drawing.Size(121, 24);
+            this.AuthorsBox.TabIndex = 9;
+            // 
             // AddBookDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(349, 382);
+            this.Controls.Add(this.AuthorsBox);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonAddBook);
@@ -130,6 +140,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AddBookDialog";
             this.Text = "AddBookDialog";
+            this.Load += new System.EventHandler(this.AddBookDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,5 +157,6 @@
         private System.Windows.Forms.Button buttonAddBook;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.ComboBox AuthorsBox;
     }
 }

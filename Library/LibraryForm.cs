@@ -17,7 +17,8 @@ namespace Library
     {
 
         BookService bookService;
-
+        AuthorService authorService;
+        private IEnumerable<Author> authorList = new List<Author>();
         public LibraryForm()
         {
             InitializeComponent();
@@ -29,8 +30,9 @@ namespace Library
             RepositoryFactory repFactory = new RepositoryFactory(context);
 
             this.bookService = new BookService(repFactory);
-
+            this.authorService = new AuthorService(repFactory);
             ShowAllBooks(bookService.All());
+            ShowAllAuthors(authorService.All());
         }
 
 
@@ -42,7 +44,15 @@ namespace Library
                 lbBooks.Items.Add(book.Title + " " + " [5]");
             }
         }
-
+        private void ShowAllAuthors(IEnumerable<Author> authors)
+        {
+            lbAuthors.Items.Clear();
+            foreach (Author author in authors)
+            {
+                lbAuthors.Items.Add(author.Name);
+            }
+            this.authorList = authors;
+        }
 
 
 
@@ -56,7 +66,7 @@ namespace Library
         {
             //Detta fungerar nu måste vi bara fundera på hur vi gerdom här värdena till en service.
             //Även hur vi konverterar en string till en Author (_BookAuthor)
-            AddBookDialog abd = new AddBookDialog();
+            AddBookDialog abd = new AddBookDialog(authorList);
             if (abd.ShowDialog() == DialogResult.OK)
             {
                 Testbox.Items.Add(abd._ISBN);
