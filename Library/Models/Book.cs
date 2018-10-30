@@ -15,6 +15,7 @@ namespace Library.Models
         [Required]
         public string ISBN { get; set; }
         public string Description { get; set; }
+        [Required]
         public virtual Author Author { get; set; }
         public virtual ICollection<BookCopy> BookCopies { get; set; }
         /// <summary>

@@ -39,9 +39,11 @@ namespace Library
         private void ShowAllBooks(IEnumerable<Book> books)
         {
             lbBooks.Items.Clear();
+      
             foreach (Book book in books)
             {
-                lbBooks.Items.Add(book.Title + " " + " [5]");
+                lbBooks.Items.Add(book.Title +  " [ " + book.BookCopies.Count() + " ]");
+        
             }
         }
         private void ShowAllAuthors(IEnumerable<Author> authors)
@@ -73,6 +75,7 @@ namespace Library
                 Testbox.Items.Add(abd._Title);
                 Testbox.Items.Add(abd._BookAuthor);
                 Testbox.Items.Add(abd._Description);
+        Testbox.Items.Add(abd._BookAuthor.Name);
                 // something like his?
                 Book b = new Book();
                 b.ISBN = abd._ISBN;

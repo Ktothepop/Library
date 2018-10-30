@@ -34,6 +34,14 @@ namespace Library.Services
              select b;
     }
 
+    //Tar in author objekt och returnerar alla böcker som den skrivit
+    public IEnumerable<Book> GetBooksByAuthor(Author author)
+    {
+      return from b in bookRepository.All()
+             where b.Author == author
+             select b;
+    }
+
     /// <summary>
     /// The Edit method makes sure that the given Book object is saved to the database and raises the Updated() event.
     /// </summary>

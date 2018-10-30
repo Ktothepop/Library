@@ -13,7 +13,7 @@ namespace Library.Models
     public int Id { get; set; }
     public DateTime TimeOfLoan { get; set; }
     public DateTime DueDate { get; set; }
-    public DateTime TimeOfReturn { get; set; }
+    public DateTime? TimeOfReturn { get; set; }
     public BookCopy BookCopy { get; set; } //Koppling till en (1) specifik BookCopy
     public Member Member { get; set; } //Koppling till en (1) specifik Member (låntagare)
 

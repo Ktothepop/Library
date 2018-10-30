@@ -13,5 +13,12 @@ namespace Library.Models
     [Required]
     public string Name { get; set; }
     public virtual ICollection<Book> Books { get; set; }
+    /// <summary>
+    /// Useful for adding the book objects directly to a ListBox.
+    /// </summary>
+    public override string ToString()
+    {
+      return String.Format("{0}", this.Name);
+    }
   }
 }
