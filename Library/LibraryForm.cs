@@ -63,7 +63,13 @@ namespace Library
                 Testbox.Items.Add(abd._Title);
                 Testbox.Items.Add(abd._BookAuthor);
                 Testbox.Items.Add(abd._Description);
-
+                // something like his?
+                Book b = new Book();
+                b.ISBN = abd._ISBN;
+                b.Title = abd._Title;
+                //b.Author = abd._BookAuthor;
+                b.Description = abd._Description;
+                //nånting.Add(b);
             }
         }
     }
