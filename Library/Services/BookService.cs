@@ -42,13 +42,36 @@ namespace Library.Services
              select b;
     }
 
+
+
+    //Adds the book copy to the book
+    public void BookCopyAdded(Book b, BookCopy bc)
+    {
+      if (b != null && bc != null) {
+        b.BookCopies.Add(bc);
+        bookRepository.Edit(b);
+      }
+
+    }
+
+    public void Add(Book b)
+    {
+      if (b != null)
+        bookRepository.Add(b);
+    }
+    public void Remove(Book b)
+    {
+      if (b != null)
+        bookRepository.Remove(b);
+    }
     /// <summary>
     /// The Edit method makes sure that the given Book object is saved to the database and raises the Updated() event.
     /// </summary>
     /// <param name="b"></param>
     public void Edit(Book b)
     {
-      bookRepository.Edit(b);
+      if (b != null)
+        bookRepository.Edit(b);
       // TODO: Raise the Updated event.
     }
 
