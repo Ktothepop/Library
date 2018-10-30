@@ -32,8 +32,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.MembersBox = new System.Windows.Forms.ComboBox();
+            this.BookCopiesBox = new System.Windows.Forms.ComboBox();
             this.buttonCreateLoan = new System.Windows.Forms.Button();
             this.labelTimeOfLoan = new System.Windows.Forms.Label();
             this.labelDueDate = new System.Windows.Forms.Label();
@@ -75,21 +75,22 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Due date";
             // 
-            // comboBox1
+            // MembersBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(54, 58);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 6;
+            this.MembersBox.FormattingEnabled = true;
+            this.MembersBox.Location = new System.Drawing.Point(54, 58);
+            this.MembersBox.Name = "MembersBox";
+            this.MembersBox.Size = new System.Drawing.Size(121, 24);
+            this.MembersBox.TabIndex = 6;
+            this.MembersBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // comboBox2
+            // BookCopiesBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(54, 108);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 7;
+            this.BookCopiesBox.FormattingEnabled = true;
+            this.BookCopiesBox.Location = new System.Drawing.Point(54, 108);
+            this.BookCopiesBox.Name = "BookCopiesBox";
+            this.BookCopiesBox.Size = new System.Drawing.Size(121, 24);
+            this.BookCopiesBox.TabIndex = 7;
             // 
             // buttonCreateLoan
             // 
@@ -128,14 +129,15 @@
             this.Controls.Add(this.labelDueDate);
             this.Controls.Add(this.labelTimeOfLoan);
             this.Controls.Add(this.buttonCreateLoan);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.BookCopiesBox);
+            this.Controls.Add(this.MembersBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "MakeLoanDialog";
             this.Text = "MakeLoanDialog";
+            this.Load += new System.EventHandler(this.MakeLoanDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,8 +149,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox MembersBox;
+        private System.Windows.Forms.ComboBox BookCopiesBox;
         private System.Windows.Forms.Button buttonCreateLoan;
         private System.Windows.Forms.Label labelTimeOfLoan;
         private System.Windows.Forms.Label labelDueDate;

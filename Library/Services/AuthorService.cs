@@ -20,7 +20,11 @@ namespace Library.Services
         {
             return authorRepository.All();
         }
-      
+        public void Add(Author a)
+        {
+            if (a != null)
+                authorRepository.Add(a);
+        }
     }
 
 }

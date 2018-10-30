@@ -13,6 +13,8 @@ namespace Library
 {
     public partial class MakeLoanDialog : Form
     {
+        private IEnumerable<Member> membersList = new List<Member>();
+        private IEnumerable<BookCopy> bookCopiesList = new List<BookCopy>();
         private DateTime TimeOfLoan;
         private DateTime DueDate;
         private Member LoanMember;
@@ -38,8 +40,10 @@ namespace Library
             get { return LoanBookCopy; }
             set { LoanBookCopy = value; }
         }
-        public MakeLoanDialog()
+        public MakeLoanDialog(IEnumerable<Member> inMember, IEnumerable<BookCopy> inBookCopy)
         {
+            this.membersList = inMember;
+            this.bookCopiesList = inBookCopy;
             InitializeComponent();
             DateTime ToL = DateTime.Now;
             labelTimeOfLoan.Text = ToL.ToLongDateString();
@@ -52,7 +56,27 @@ namespace Library
 
         private void buttonCreateLoan_Click(object sender, EventArgs e)
         {
-            //fixa members och bookcopies;
+            _LoanMember = (Member)MembersBox.SelectedItem;
+            _LoanBookCopy = (BookCopy)BookCopiesBox.SelectedItem;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MakeLoanDialog_Load(object sender, EventArgs e)
+        {
+            MembersBox.Items.Clear();
+            foreach (Member m in this.membersList)
+            {
+                MembersBox.Items.Add(m);
+            }
+            BookCopiesBox.Items.Clear();
+            foreach (BookCopy bc in this.bookCopiesList)
+            {
+                BookCopiesBox.Items.Add(bc);
+            }
         }
     }
 }

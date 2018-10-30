@@ -16,8 +16,16 @@ namespace Library.Services
     {
       this.memberRepository = rFactory.CreateMemberRepository();
     }
+        public IEnumerable<Member> All()
+        {
+            return memberRepository.All();
+        }
+        public void Add(Member m)
+        {
+            if (m != null)
+                memberRepository.Add(m);
+        }
 
-    
 
-  }
+    }
 }

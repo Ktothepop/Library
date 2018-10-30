@@ -87,11 +87,22 @@ namespace Library.Models
       };
       context.BookCopies.Add(bc3);
 
-      //LOANS:
+            //LOANS:
+            
 
-
-      //MEMBERS:
-
+            //MEMBERS:
+            Member Harry = new Member()
+            {
+                Name = "Harry",
+                SSN = 1337121955
+            };
+            context.Members.Add(Harry);
+            Member Bulba = new Member()
+            {
+                Name="Bulba",
+                SSN = 123123132
+            };
+            context.Members.Add(Bulba);
       //SAVE:
       context.SaveChanges();
     }

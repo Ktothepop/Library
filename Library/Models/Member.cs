@@ -16,5 +16,11 @@ namespace Library.Models
     [Required]
     public string Name { get; set; }
     public virtual ICollection<Loan> Loans { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0}", this.Name);
+        }
+
     }
 }

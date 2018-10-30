@@ -18,7 +18,12 @@ namespace Library
 
         BookService bookService;
         AuthorService authorService;
+        MemberService memberService;
+        LoanService loanService;
+        BookCopyService bookCopyService;
         private IEnumerable<Author> authorList = new List<Author>();
+        private IEnumerable<Member> memberList = new List<Member>();
+        private IEnumerable<BookCopy> bookCopyList = new List<BookCopy>();
         public LibraryForm()
         {
             InitializeComponent();
@@ -31,8 +36,14 @@ namespace Library
 
             this.bookService = new BookService(repFactory);
             this.authorService = new AuthorService(repFactory);
+            this.memberService = new MemberService(repFactory);
+            this.loanService = new LoanService(repFactory);
+            this.bookCopyService = new BookCopyService(repFactory);
             ShowAllBooks(bookService.All());
             ShowAllAuthors(authorService.All());
+            ShowAllMembers(memberService.All());
+            GetBookCopies(bookCopyService.All());
+            ShowAllLoans(loanService.All());
         }
 
 
@@ -42,9 +53,11 @@ namespace Library
 
             foreach (Book book in books)
             {
-                lbBooks.Items.Add(book.Title + " [ " + book.BookCopies.Count() + " ]");
+                lbBooks.Items.Add(book.Title + " [ " +  " ]" + book.Id);
 
             }
+            
+
         }
         private void ShowAllAuthors(IEnumerable<Author> authors)
         {
@@ -55,8 +68,29 @@ namespace Library
             }
             this.authorList = authors;
         }
+        private void ShowAllMembers(IEnumerable<Member> members)
+        {
+            lbMembers.Items.Clear();
+            foreach (Member member in members)
+            {
+                lbMembers.Items.Add(member.Name + "  |  " + member.SSN);
+            }
+            this.memberList = members;
+        }
+        private void ShowAllLoans(IEnumerable<Loan> loans)
+        {
+            lbLoans.Items.Clear();
+            foreach (Loan loan in loans)
+            {
+                lbLoans.Items.Add(loan.BookCopy.Book.Title + " | " + loan.Member.Name + " | " + loan.TimeOfLoan + " | " + loan.DueDate);
 
-
+                
+            }
+        }
+        private void GetBookCopies(IEnumerable<BookCopy> bookCopies)
+        {
+            this.bookCopyList = bookCopies;
+        }
 
 
         private void LibraryForm_Load(object sender, EventArgs e)
@@ -71,18 +105,16 @@ namespace Library
             AddBookDialog abd = new AddBookDialog(authorList);
             if (abd.ShowDialog() == DialogResult.OK)
             {
-                Testbox.Items.Add(abd._ISBN);
-                Testbox.Items.Add(abd._Title);
-                Testbox.Items.Add(abd._BookAuthor);
-                Testbox.Items.Add(abd._Description);
-                Testbox.Items.Add(abd._BookAuthor.Name);
-                // something like his?
-                Book b = new Book();
-                b.ISBN = abd._ISBN;
-                b.Title = abd._Title;
-                //b.Author = abd._BookAuthor;
-                b.Description = abd._Description;
-                //nånting.Add(b);
+                Book d = new Book()
+                {
+                    Title = abd._Title,
+                    ISBN = abd._ISBN,
+                    Author = abd._BookAuthor,
+                    Description = abd._Description
+                }; 
+                bookService.Add(d);
+                ShowAllBooks(bookService.All());
+
             }
         }
 
@@ -91,8 +123,12 @@ namespace Library
             AddAuthorDialog aad = new AddAuthorDialog();
             if (aad.ShowDialog() == DialogResult.OK)
             {
-                //fixa sp att den faktiskt lägger till en Author 
-                Testbox.Items.Add(aad._Name);
+                Author a = new Author()
+                {
+                    Name = aad._Name
+                };
+                authorService.Add(a);
+                ShowAllAuthors(authorService.All());
             }
         }
 
@@ -101,19 +137,24 @@ namespace Library
             AddMemberDialog amd = new AddMemberDialog();
             if (amd.ShowDialog() == DialogResult.OK)
             {
-                //Fixa så att den faktiskt lägger till en Memeber.
-                Testbox.Items.Add(amd._Name);
-                Testbox.Items.Add(amd._SSN);
+                Member m = new Member()
+                {
+                    Name = amd._Name,
+                    SSN = amd._SSN
+                };
+                memberService.Add(m);
+                ShowAllMembers(memberService.All());
             }
         }
 
         private void btn_Create_Loan_Click(object sender, EventArgs e)
         {
-            MakeLoanDialog mld = new MakeLoanDialog();
+            MakeLoanDialog mld = new MakeLoanDialog(memberList, bookCopyList);
             if (mld.ShowDialog() == DialogResult.OK)
             {
-                Testbox.Items.Add(mld._TimeOfLoan.ToLongDateString() +" "+ mld._DueDate.ToLongDateString()); 
 
+                loanService.CreateNewLoan(mld._TimeOfLoan, mld._DueDate, mld._LoanBookCopy, mld._LoanMember);
+                ShowAllLoans(loanService.All());
             }
         }
     }
