@@ -39,11 +39,11 @@ namespace Library
         private void ShowAllBooks(IEnumerable<Book> books)
         {
             lbBooks.Items.Clear();
-      
+
             foreach (Book book in books)
             {
-                lbBooks.Items.Add(book.Title +  " [ " + book.BookCopies.Count() + " ]");
-        
+                lbBooks.Items.Add(book.Title + " [ " + book.BookCopies.Count() + " ]");
+
             }
         }
         private void ShowAllAuthors(IEnumerable<Author> authors)
@@ -75,7 +75,7 @@ namespace Library
                 Testbox.Items.Add(abd._Title);
                 Testbox.Items.Add(abd._BookAuthor);
                 Testbox.Items.Add(abd._Description);
-        Testbox.Items.Add(abd._BookAuthor.Name);
+                Testbox.Items.Add(abd._BookAuthor.Name);
                 // something like his?
                 Book b = new Book();
                 b.ISBN = abd._ISBN;
@@ -83,6 +83,37 @@ namespace Library
                 //b.Author = abd._BookAuthor;
                 b.Description = abd._Description;
                 //nånting.Add(b);
+            }
+        }
+
+        private void btn_Create_Author_Click(object sender, EventArgs e)
+        {
+            AddAuthorDialog aad = new AddAuthorDialog();
+            if (aad.ShowDialog() == DialogResult.OK)
+            {
+                //fixa sp att den faktiskt lägger till en Author 
+                Testbox.Items.Add(aad._Name);
+            }
+        }
+
+        private void btn_Create_Member_Click(object sender, EventArgs e)
+        {
+            AddMemberDialog amd = new AddMemberDialog();
+            if (amd.ShowDialog() == DialogResult.OK)
+            {
+                //Fixa så att den faktiskt lägger till en Memeber.
+                Testbox.Items.Add(amd._Name);
+                Testbox.Items.Add(amd._SSN);
+            }
+        }
+
+        private void btn_Create_Loan_Click(object sender, EventArgs e)
+        {
+            MakeLoanDialog mld = new MakeLoanDialog();
+            if (mld.ShowDialog() == DialogResult.OK)
+            {
+                Testbox.Items.Add(mld._TimeOfLoan.ToLongDateString() +" "+ mld._DueDate.ToLongDateString()); 
+
             }
         }
     }

@@ -57,17 +57,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAuthorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAuthorDialog.Designer.cs">
+      <DependentUpon>AddAuthorDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddBookDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddBookDialog.Designer.cs">
       <DependentUpon>AddBookDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddMemberDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMemberDialog.Designer.cs">
+      <DependentUpon>AddMemberDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="LibraryForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LibraryForm.Designer.cs">
       <DependentUpon>LibraryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MakeLoanDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MakeLoanDialog.Designer.cs">
+      <DependentUpon>MakeLoanDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\BookCopy.cs" />
@@ -91,11 +109,20 @@
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\LoanService.cs" />
     <Compile Include="Services\MemberService.cs" />
+    <EmbeddedResource Include="AddAuthorDialog.resx">
+      <DependentUpon>AddAuthorDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddBookDialog.resx">
       <DependentUpon>AddBookDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddMemberDialog.resx">
+      <DependentUpon>AddMemberDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LibraryForm.resx">
       <DependentUpon>LibraryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MakeLoanDialog.resx">
+      <DependentUpon>MakeLoanDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -60,7 +60,7 @@
             this.lbBooks.FormattingEnabled = true;
             this.lbBooks.ItemHeight = 16;
             this.lbBooks.Location = new System.Drawing.Point(21, 85);
-            this.lbBooks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbBooks.Margin = new System.Windows.Forms.Padding(4);
             this.lbBooks.Name = "lbBooks";
             this.lbBooks.Size = new System.Drawing.Size(332, 340);
             this.lbBooks.TabIndex = 0;
@@ -101,7 +101,7 @@
             this.lbAuthors.FormattingEnabled = true;
             this.lbAuthors.ItemHeight = 16;
             this.lbAuthors.Location = new System.Drawing.Point(613, 85);
-            this.lbAuthors.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbAuthors.Margin = new System.Windows.Forms.Padding(4);
             this.lbAuthors.Name = "lbAuthors";
             this.lbAuthors.Size = new System.Drawing.Size(332, 340);
             this.lbAuthors.TabIndex = 4;
@@ -122,7 +122,7 @@
             this.lbMembers.FormattingEnabled = true;
             this.lbMembers.ItemHeight = 16;
             this.lbMembers.Location = new System.Drawing.Point(21, 655);
-            this.lbMembers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbMembers.Margin = new System.Windows.Forms.Padding(4);
             this.lbMembers.Name = "lbMembers";
             this.lbMembers.Size = new System.Drawing.Size(332, 340);
             this.lbMembers.TabIndex = 6;
@@ -143,7 +143,7 @@
             this.lbLoans.FormattingEnabled = true;
             this.lbLoans.ItemHeight = 16;
             this.lbLoans.Location = new System.Drawing.Point(613, 655);
-            this.lbLoans.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbLoans.Margin = new System.Windows.Forms.Padding(4);
             this.lbLoans.Name = "lbLoans";
             this.lbLoans.Size = new System.Drawing.Size(332, 340);
             this.lbLoans.TabIndex = 8;
@@ -163,7 +163,7 @@
             // 
             this.rbActive.AutoSize = true;
             this.rbActive.Location = new System.Drawing.Point(613, 626);
-            this.rbActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbActive.Margin = new System.Windows.Forms.Padding(4);
             this.rbActive.Name = "rbActive";
             this.rbActive.Size = new System.Drawing.Size(67, 21);
             this.rbActive.TabIndex = 12;
@@ -175,7 +175,7 @@
             // 
             this.rbReturned.AutoSize = true;
             this.rbReturned.Location = new System.Drawing.Point(729, 626);
-            this.rbReturned.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbReturned.Margin = new System.Windows.Forms.Padding(4);
             this.rbReturned.Name = "rbReturned";
             this.rbReturned.Size = new System.Drawing.Size(88, 21);
             this.rbReturned.TabIndex = 13;
@@ -187,7 +187,7 @@
             // 
             this.rbOverdue.AutoSize = true;
             this.rbOverdue.Location = new System.Drawing.Point(859, 626);
-            this.rbOverdue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbOverdue.Margin = new System.Windows.Forms.Padding(4);
             this.rbOverdue.Name = "rbOverdue";
             this.rbOverdue.Size = new System.Drawing.Size(84, 21);
             this.rbOverdue.TabIndex = 14;
@@ -198,7 +198,7 @@
             // btn_Create_Book
             // 
             this.btn_Create_Book.Location = new System.Drawing.Point(21, 433);
-            this.btn_Create_Book.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Create_Book.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Create_Book.Name = "btn_Create_Book";
             this.btn_Create_Book.Size = new System.Drawing.Size(133, 37);
             this.btn_Create_Book.TabIndex = 15;
@@ -209,7 +209,7 @@
             // btn_Add_Book_Copy
             // 
             this.btn_Add_Book_Copy.Location = new System.Drawing.Point(163, 433);
-            this.btn_Add_Book_Copy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Add_Book_Copy.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Add_Book_Copy.Name = "btn_Add_Book_Copy";
             this.btn_Add_Book_Copy.Size = new System.Drawing.Size(133, 37);
             this.btn_Add_Book_Copy.TabIndex = 16;
@@ -219,37 +219,40 @@
             // btn_Create_Loan
             // 
             this.btn_Create_Loan.Location = new System.Drawing.Point(613, 1003);
-            this.btn_Create_Loan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Create_Loan.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Create_Loan.Name = "btn_Create_Loan";
             this.btn_Create_Loan.Size = new System.Drawing.Size(133, 37);
             this.btn_Create_Loan.TabIndex = 17;
             this.btn_Create_Loan.Text = "Create Loan";
             this.btn_Create_Loan.UseVisualStyleBackColor = true;
+            this.btn_Create_Loan.Click += new System.EventHandler(this.btn_Create_Loan_Click);
             // 
             // btn_Create_Member
             // 
             this.btn_Create_Member.Location = new System.Drawing.Point(21, 1003);
-            this.btn_Create_Member.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Create_Member.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Create_Member.Name = "btn_Create_Member";
             this.btn_Create_Member.Size = new System.Drawing.Size(133, 37);
             this.btn_Create_Member.TabIndex = 18;
             this.btn_Create_Member.Text = "Create Member";
             this.btn_Create_Member.UseVisualStyleBackColor = true;
+            this.btn_Create_Member.Click += new System.EventHandler(this.btn_Create_Member_Click);
             // 
             // btn_Create_Author
             // 
             this.btn_Create_Author.Location = new System.Drawing.Point(613, 433);
-            this.btn_Create_Author.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Create_Author.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Create_Author.Name = "btn_Create_Author";
             this.btn_Create_Author.Size = new System.Drawing.Size(133, 37);
             this.btn_Create_Author.TabIndex = 19;
             this.btn_Create_Author.Text = "Create Author";
             this.btn_Create_Author.UseVisualStyleBackColor = true;
+            this.btn_Create_Author.Click += new System.EventHandler(this.btn_Create_Author_Click);
             // 
             // Btn_Exit
             // 
             this.Btn_Exit.Location = new System.Drawing.Point(1013, 1103);
-            this.Btn_Exit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_Exit.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Exit.Name = "Btn_Exit";
             this.Btn_Exit.Size = new System.Drawing.Size(133, 37);
             this.Btn_Exit.TabIndex = 20;
@@ -259,7 +262,7 @@
             // btn_Return_Loan
             // 
             this.btn_Return_Loan.Location = new System.Drawing.Point(755, 1003);
-            this.btn_Return_Loan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Return_Loan.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Return_Loan.Name = "btn_Return_Loan";
             this.btn_Return_Loan.Size = new System.Drawing.Size(133, 37);
             this.btn_Return_Loan.TabIndex = 21;
@@ -269,7 +272,7 @@
             // Tb_Book_Name
             // 
             this.Tb_Book_Name.Location = new System.Drawing.Point(363, 105);
-            this.Tb_Book_Name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Book_Name.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_Book_Name.Name = "Tb_Book_Name";
             this.Tb_Book_Name.Size = new System.Drawing.Size(155, 22);
             this.Tb_Book_Name.TabIndex = 22;
@@ -297,7 +300,7 @@
             // tb_Book_Title
             // 
             this.tb_Book_Title.Location = new System.Drawing.Point(363, 164);
-            this.tb_Book_Title.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_Book_Title.Margin = new System.Windows.Forms.Padding(4);
             this.tb_Book_Title.Name = "tb_Book_Title";
             this.tb_Book_Title.Size = new System.Drawing.Size(155, 22);
             this.tb_Book_Title.TabIndex = 25;
@@ -315,7 +318,7 @@
             // tb_Book_ISBN
             // 
             this.tb_Book_ISBN.Location = new System.Drawing.Point(363, 225);
-            this.tb_Book_ISBN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_Book_ISBN.Margin = new System.Windows.Forms.Padding(4);
             this.tb_Book_ISBN.Name = "tb_Book_ISBN";
             this.tb_Book_ISBN.Size = new System.Drawing.Size(155, 22);
             this.tb_Book_ISBN.TabIndex = 27;
@@ -333,7 +336,7 @@
             // tb_Book_Description
             // 
             this.tb_Book_Description.Location = new System.Drawing.Point(363, 284);
-            this.tb_Book_Description.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tb_Book_Description.Margin = new System.Windows.Forms.Padding(4);
             this.tb_Book_Description.Name = "tb_Book_Description";
             this.tb_Book_Description.Size = new System.Drawing.Size(155, 22);
             this.tb_Book_Description.TabIndex = 29;
@@ -341,7 +344,7 @@
             // btn_Save_Changes
             // 
             this.btn_Save_Changes.Location = new System.Drawing.Point(372, 319);
-            this.btn_Save_Changes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_Save_Changes.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Save_Changes.Name = "btn_Save_Changes";
             this.btn_Save_Changes.Size = new System.Drawing.Size(133, 37);
             this.btn_Save_Changes.TabIndex = 31;
@@ -361,6 +364,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1163, 1055);
             this.Controls.Add(this.Testbox);
             this.Controls.Add(this.btn_Save_Changes);
@@ -392,7 +396,7 @@
             this.Controls.Add(this.bookNameLabel);
             this.Controls.Add(this.lb_Book_Catalogue);
             this.Controls.Add(this.lbBooks);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LibraryForm";
             this.Text = "Library";
             this.Load += new System.EventHandler(this.LibraryForm_Load);
