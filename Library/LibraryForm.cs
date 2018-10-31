@@ -199,8 +199,12 @@ namespace Library
 
     private void btn_Return_Loan_Click(object sender, EventArgs e)
     {
-      Loan retrunLoan = (Loan)lbLoans.SelectedItem;
-      loanService.ReturnLoanCurrentTime(retrunLoan);
+      Loan returnLoan = (Loan)lbLoans.SelectedItem;
+      int userFine = loanService.ReturnLoanCurrentTime(returnLoan);
+      if(userFine > 0) {
+        MessageBox.Show(Convert.ToString(userFine) + " SEK must be payed", "A fine must be payed", MessageBoxButtons.OK);  
+
+      }
     }
   }
 }

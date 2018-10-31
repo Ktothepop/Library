@@ -46,9 +46,8 @@ namespace Library.Services
     public IEnumerable<Loan> GetOverdueLoans()
     {
       DateTime today = DateTime.Now;
-      DateTime overdue = today.AddDays(15);
       return from l in loanRepository.All()
-             where l.TimeOfLoan > overdue
+             where today > l.DueDate && l.TimeOfReturn == null
              select l;
     }
 
@@ -64,7 +63,7 @@ namespace Library.Services
         loanRepository.Edit(loan);
         OnChanged(EventArgs.Empty);
       }
-        
+
     }
     public int CalculateFine(Loan loan)
     {
@@ -89,12 +88,14 @@ namespace Library.Services
     }
 
     //Returns loan at this actual time
-    public void ReturnLoanCurrentTime(Loan loan)
+    public int ReturnLoanCurrentTime(Loan loan)
     {
+      int userFine = CalculateFine(loan);
       loan.TimeOfReturn = DateTime.Now;
       loan.BookCopy.IsLoaned = false;
       loanRepository.Edit(loan);
       OnChanged(EventArgs.Empty);
+      return userFine;
     }
     public void ReturnLoanCustomTime(Loan loan, DateTime returnTime)
     {
