@@ -110,14 +110,14 @@ namespace Library
     {
       lbAuthors.Items.Clear();
       foreach (Author author in authors) {
-        lbAuthors.Items.Add(author.Name);
+        lbAuthors.Items.Add(author);
       }
     }
     private void ShowAllMembers(IEnumerable<Member> members)
     {
       lbMembers.Items.Clear();
       foreach (Member member in members) {
-        lbMembers.Items.Add(member.Name + "  |  " + member.SSN);
+        lbMembers.Items.Add(member);
       }
     }
     private void ShowAllLoans(IEnumerable<Loan> loans)
@@ -206,5 +206,27 @@ namespace Library
 
       }
     }
-  }
+
+        private void btn_Check_Loan_Click(object sender, EventArgs e)
+        {
+            Member m = (Member)lbMembers.SelectedItem;
+            string contain = "";
+            foreach (Loan l in m.Loans)
+            {
+                contain += l + "\n";
+            }
+            MessageBox.Show(contain);
+        }
+
+        private void btn_Check_Books_By_Author_Click(object sender, EventArgs e)
+        {
+            Author a = (Author)lbAuthors.SelectedItem;
+            string contain = "";
+            foreach (Book l in a.Books)
+            {
+                contain += l + "\n";
+            }
+            MessageBox.Show(contain);
+        }
+    }
 }
