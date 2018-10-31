@@ -19,7 +19,19 @@ namespace Library.Models
 
         public override string ToString()
         {
-            return String.Format("{0}", this.TimeOfLoan.ToLongDateString() + " | " + this.TimeOfReturn + " | " + this.Member.Name + " | " + this.BookCopy.Book.Title);
+      string TimeOfReturnTemp = this.TimeOfReturn.HasValue ? this.TimeOfReturn.Value.ToString("yyyy'-'MM'-'dd") : "Not returned";
+
+            return String.Format("{0}", 
+              "Loaned on: " + 
+              this.TimeOfLoan.ToString("yyyy'-'MM'-'dd") + 
+              " | Due Date: " +
+              this.DueDate.ToString("yyyy'-'MM'-'dd") +
+              " | Returned on: " +
+              TimeOfReturnTemp + 
+              " | Member: " + 
+              this.Member.Name + 
+              " | Book: " + 
+              this.BookCopy.Book.Title);
         }
     }
 }
