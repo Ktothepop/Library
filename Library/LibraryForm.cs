@@ -21,7 +21,6 @@ namespace Library
     MemberService memberService;
     LoanService loanService;
     BookCopyService bookCopyService;
-    private RadioButton selectedRB;
     public LibraryForm()
     {
       InitializeComponent();
@@ -194,7 +193,10 @@ namespace Library
     private void btn_Add_Book_Copy_Click(object sender, EventArgs e)
     {
       Book book = (Book)lbBooks.SelectedItem;
-      bookCopyService.Add(new BookCopy() { Book = book });
+      if(book != null) {
+        bookCopyService.Add(new BookCopy() { Book = book });
+
+      }else { MessageBox.Show("Select a book from the list to add a book copy to selected item", "Error: No item selected", MessageBoxButtons.OK); }
     }
 
     private void btn_Return_Loan_Click(object sender, EventArgs e)

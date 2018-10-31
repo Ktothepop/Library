@@ -37,7 +37,7 @@ namespace Library.Services
         bookCopyRepository.Add(bc);
         OnChanged(EventArgs.Empty);
 
-      }
+      } else throw new ArgumentNullException();
     }
     public IEnumerable<BookCopy> GetAvailableBookCopies(IEnumerable<Loan> loans)
     {
