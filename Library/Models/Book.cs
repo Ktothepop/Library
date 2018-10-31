@@ -23,7 +23,8 @@ namespace Library.Models
         /// </summary>
         public override string ToString()
         {
-            return String.Format("{0}", this.Title);
+            int bookCopyCount = this.BookCopies == null ? 0 : this.BookCopies.Count();
+            return String.Format("{0}", this.Title + " | " + bookCopyCount);
         }
     }
 }

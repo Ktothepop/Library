@@ -26,6 +26,12 @@ namespace Library.Services
       return bookRepository.All();
     }
 
+    public Book GetBookById(int id)
+        {
+            return (from b in bookRepository.All()
+                    where b.Id == id
+                    select b).First();
+        }
 
     public IEnumerable<Book> GetAllThatContainsInTitle(string a)
     {

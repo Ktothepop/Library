@@ -21,5 +21,10 @@ namespace Library.Services
         {
             return bookCopyRepository.All();
         }
+        public void Add(BookCopy bc)
+        {
+            if (bc != null)
+                bookCopyRepository.Add(bc);
+        }
     }
 }

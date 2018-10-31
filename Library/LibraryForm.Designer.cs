@@ -52,7 +52,6 @@
             this.lb_Book_Description = new System.Windows.Forms.Label();
             this.tb_Book_Description = new System.Windows.Forms.TextBox();
             this.btn_Save_Changes = new System.Windows.Forms.Button();
-            this.Testbox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // lbBooks
@@ -215,6 +214,7 @@
             this.btn_Add_Book_Copy.TabIndex = 16;
             this.btn_Add_Book_Copy.Text = "Add Book Copy";
             this.btn_Add_Book_Copy.UseVisualStyleBackColor = true;
+            this.btn_Add_Book_Copy.Click += new System.EventHandler(this.btn_Add_Book_Copy_Click);
             // 
             // btn_Create_Loan
             // 
@@ -251,13 +251,14 @@
             // 
             // Btn_Exit
             // 
-            this.Btn_Exit.Location = new System.Drawing.Point(1013, 1103);
+            this.Btn_Exit.Location = new System.Drawing.Point(983, 1040);
             this.Btn_Exit.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Exit.Name = "Btn_Exit";
             this.Btn_Exit.Size = new System.Drawing.Size(133, 37);
             this.Btn_Exit.TabIndex = 20;
             this.Btn_Exit.Text = "Exit";
             this.Btn_Exit.UseVisualStyleBackColor = true;
+            this.Btn_Exit.Click += new System.EventHandler(this.Btn_Exit_Click);
             // 
             // btn_Return_Loan
             // 
@@ -351,22 +352,12 @@
             this.btn_Save_Changes.Text = "Save Changes";
             this.btn_Save_Changes.UseVisualStyleBackColor = true;
             // 
-            // Testbox
-            // 
-            this.Testbox.FormattingEnabled = true;
-            this.Testbox.ItemHeight = 16;
-            this.Testbox.Location = new System.Drawing.Point(372, 386);
-            this.Testbox.Name = "Testbox";
-            this.Testbox.Size = new System.Drawing.Size(213, 228);
-            this.Testbox.TabIndex = 32;
-            // 
             // LibraryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1163, 1055);
-            this.Controls.Add(this.Testbox);
             this.Controls.Add(this.btn_Save_Changes);
             this.Controls.Add(this.tb_Book_Description);
             this.Controls.Add(this.lb_Book_Description);
@@ -436,7 +427,6 @@
     private System.Windows.Forms.Label lb_Book_Description;
     private System.Windows.Forms.TextBox tb_Book_Description;
     private System.Windows.Forms.Button btn_Save_Changes;
-        private System.Windows.Forms.ListBox Testbox;
     }
 }
 

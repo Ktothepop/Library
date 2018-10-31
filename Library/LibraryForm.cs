@@ -49,7 +49,7 @@ namespace Library
 
             foreach (Book book in books)
             {
-                lbBooks.Items.Add(book.Title + " [ " +  " ]" + book.Id);
+                lbBooks.Items.Add(book);
 
             }
             
@@ -147,6 +147,18 @@ namespace Library
                 loanService.CreateNewLoan(mld._TimeOfLoan, mld._DueDate, mld._LoanBookCopy, mld._LoanMember);
                 ShowAllLoans(loanService.All());
             }
+        }
+
+        private void Btn_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_Add_Book_Copy_Click(object sender, EventArgs e)
+        {
+            Book book = (Book)lbBooks.SelectedItem;
+            bookCopyService.Add(new BookCopy() { Book = book});
+            ShowAllBooks(bookService.All());
         }
     }
 }
