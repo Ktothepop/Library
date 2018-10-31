@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace Library
 {
+    /// <summary>
+    /// Dialog window for creating Author object
+    /// </summary>
     public partial class AddAuthorDialog : Form
     {
         private string AuthorName;
@@ -22,7 +25,7 @@ namespace Library
         {
             InitializeComponent();
         }
-
+        
         private void buttonAddAuthor_Click(object sender, EventArgs e)
         {
             _Name = textBoxName.Text;

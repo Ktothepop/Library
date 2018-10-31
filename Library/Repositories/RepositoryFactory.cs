@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Library.Repositories
 {
+   /// <summary>
+   /// Shares a Librarycontext with all repositories
+   /// </summary>
   class RepositoryFactory
   {
     private LibraryContext context;

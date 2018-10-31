@@ -11,8 +11,12 @@ using Library.Models;
 
 namespace Library
 {
+    /// <summary>
+    /// Dialog window for creating a Loan object
+    /// </summary>
     public partial class MakeLoanDialog : Form
     {
+        
         private IEnumerable<Member> membersList = new List<Member>();
         private IEnumerable<BookCopy> bookCopiesList = new List<BookCopy>();
         private DateTime TimeOfLoan;
@@ -40,6 +44,15 @@ namespace Library
             get { return LoanBookCopy; }
             set { LoanBookCopy = value; }
         }
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="inMember">
+        /// List of Members
+        /// </param>
+        /// <param name="inBookCopy">
+        /// List of BookCopies
+        /// </param>
         public MakeLoanDialog(IEnumerable<Member> inMember, IEnumerable<BookCopy> inBookCopy)
         {
             this.membersList = inMember;
@@ -53,7 +66,15 @@ namespace Library
             _DueDate = dt.AddDays(15);
 
         }
-
+        /// <summary>
+        /// Gets Member & bookCopy values from Comboboxes
+        /// </summary>
+        /// <param name="sender">
+        /// Object reference
+        /// </param>
+        /// <param name="e">
+        /// Event data
+        /// </param>
         private void buttonCreateLoan_Click(object sender, EventArgs e)
         {
             _LoanMember = (Member)MembersBox.SelectedItem;
@@ -64,7 +85,15 @@ namespace Library
         {
 
         }
-
+        /// <summary>
+        /// Displays Members and BookCopies in Comboboxes
+        /// </summary>
+        /// <param name="sender">
+        /// Object reference
+        /// </param>
+        /// <param name="e">
+        /// Event data
+        /// </param>
         private void MakeLoanDialog_Load(object sender, EventArgs e)
         {
             MembersBox.Items.Clear();
