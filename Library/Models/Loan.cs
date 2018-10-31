@@ -14,8 +14,8 @@ namespace Library.Models
     public DateTime TimeOfLoan { get; set; }
     public DateTime DueDate { get; set; }
     public DateTime? TimeOfReturn { get; set; }
-    public BookCopy BookCopy { get; set; } //Koppling till en (1) specifik BookCopy
-    public Member Member { get; set; } //Koppling till en (1) specifik Member (låntagare)
+    public virtual BookCopy BookCopy { get; set; } //Koppling till en (1) specifik BookCopy
+    public virtual Member Member { get; set; } //Koppling till en (1) specifik Member (låntagare)
 
   }
 }

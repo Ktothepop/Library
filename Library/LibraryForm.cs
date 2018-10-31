@@ -21,9 +21,6 @@ namespace Library
         MemberService memberService;
         LoanService loanService;
         BookCopyService bookCopyService;
-        private IEnumerable<Author> authorList = new List<Author>();
-        private IEnumerable<Member> memberList = new List<Member>();
-        private IEnumerable<BookCopy> bookCopyList = new List<BookCopy>();
         public LibraryForm()
         {
             InitializeComponent();
@@ -42,7 +39,6 @@ namespace Library
             ShowAllBooks(bookService.All());
             ShowAllAuthors(authorService.All());
             ShowAllMembers(memberService.All());
-            GetBookCopies(bookCopyService.All());
             ShowAllLoans(loanService.All());
         }
 
@@ -66,7 +62,6 @@ namespace Library
             {
                 lbAuthors.Items.Add(author.Name);
             }
-            this.authorList = authors;
         }
         private void ShowAllMembers(IEnumerable<Member> members)
         {
@@ -75,7 +70,6 @@ namespace Library
             {
                 lbMembers.Items.Add(member.Name + "  |  " + member.SSN);
             }
-            this.memberList = members;
         }
         private void ShowAllLoans(IEnumerable<Loan> loans)
         {
@@ -87,10 +81,7 @@ namespace Library
                 
             }
         }
-        private void GetBookCopies(IEnumerable<BookCopy> bookCopies)
-        {
-            this.bookCopyList = bookCopies;
-        }
+        
 
 
         private void LibraryForm_Load(object sender, EventArgs e)
@@ -102,7 +93,7 @@ namespace Library
         {
             //Detta fungerar nu måste vi bara fundera på hur vi gerdom här värdena till en service.
             //Även hur vi konverterar en string till en Author (_BookAuthor)
-            AddBookDialog abd = new AddBookDialog(authorList);
+            AddBookDialog abd = new AddBookDialog(authorService.All());
             if (abd.ShowDialog() == DialogResult.OK)
             {
                 Book d = new Book()
@@ -149,7 +140,7 @@ namespace Library
 
         private void btn_Create_Loan_Click(object sender, EventArgs e)
         {
-            MakeLoanDialog mld = new MakeLoanDialog(memberList, bookCopyList);
+            MakeLoanDialog mld = new MakeLoanDialog(memberService.All(), bookCopyService.All());
             if (mld.ShowDialog() == DialogResult.OK)
             {
 

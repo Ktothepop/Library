@@ -87,7 +87,6 @@ namespace Library.Models
       };
       context.BookCopies.Add(bc3);
 
-            //LOANS:
             
 
             //MEMBERS:
@@ -105,6 +104,26 @@ namespace Library.Models
             context.Members.Add(Bulba);
       //SAVE:
       context.SaveChanges();
+            //LOANS:
+            Loan lo = new Loan()
+            {
+                Member = Harry,
+                BookCopy = bc3,
+                TimeOfLoan = new DateTime(2017, 10, 10),
+                DueDate = new DateTime(2017, 10, 25),
+                TimeOfReturn = DateTime.Now
+            };
+            
+            context.Loans.Add(lo);
+            Loan l1 = new Loan()
+            {
+                Member = Bulba,
+                BookCopy = bc1,
+                TimeOfLoan = new DateTime(2018, 01, 01),
+                DueDate = new DateTime(2018, 01, 20)
+            };
+            context.Loans.Add(l1);
+            context.SaveChanges();
+        }
     }
-  }
 }

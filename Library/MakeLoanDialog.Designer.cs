@@ -89,7 +89,7 @@
             this.BookCopiesBox.FormattingEnabled = true;
             this.BookCopiesBox.Location = new System.Drawing.Point(54, 108);
             this.BookCopiesBox.Name = "BookCopiesBox";
-            this.BookCopiesBox.Size = new System.Drawing.Size(121, 24);
+            this.BookCopiesBox.Size = new System.Drawing.Size(292, 24);
             this.BookCopiesBox.TabIndex = 7;
             // 
             // buttonCreateLoan

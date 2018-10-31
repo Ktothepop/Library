@@ -12,7 +12,7 @@ namespace Library.Models
     [Key]
     public int Id { get; set; }
     [Required]
-    public Book Book { get; set; }
+    public virtual Book Book { get; set; }
         public override string ToString()
         {
             return String.Format("{0}", this.Book.Title);
