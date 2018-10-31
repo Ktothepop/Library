@@ -228,5 +228,15 @@ namespace Library
             }
             MessageBox.Show(contain);
         }
+
+        private void Btn_Edit_TimeOfLoan_Click(object sender, EventArgs e)
+        {
+            Loan editLoan = (Loan)lbLoans.SelectedItem;
+            dateTimePickerEditLoan.Format = DateTimePickerFormat.Short;
+            editLoan.TimeOfLoan = dateTimePickerEditLoan.Value;
+            editLoan.DueDate = dateTimePickerEditLoan.Value.AddDays(15);
+            loanService.EditLoan(editLoan);
+            
+        }
     }
 }

@@ -67,8 +67,8 @@ namespace Library.Services
     }
     public int CalculateFine(Loan loan)
     {
-      if ((DateTime.Now - loan.TimeOfLoan).Days > 15) {
-        return ((DateTime.Now - loan.TimeOfLoan).Days) * 10;
+      if ((DateTime.Now - loan.DueDate).Days > 0) {
+        return ((DateTime.Now - loan.DueDate).Days) * 10;
       } else return 0;
     }
 
