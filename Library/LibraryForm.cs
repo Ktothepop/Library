@@ -21,6 +21,7 @@ namespace Library
     MemberService memberService;
     LoanService loanService;
     BookCopyService bookCopyService;
+    private RadioButton selectedRB;
     public LibraryForm()
     {
       InitializeComponent();
@@ -39,7 +40,7 @@ namespace Library
       ShowAllBooks(bookService.All());
       ShowAllAuthors(authorService.All());
       ShowAllMembers(memberService.All());
-      ShowAllLoans(loanService.All());
+      ShowActiveLoans(loanService.GetActiveLoans());
 
       //Observers
       bookService.Updated += OnChanged;
@@ -47,6 +48,11 @@ namespace Library
       memberService.Updated += OnChanged;
       loanService.Updated += OnChanged;
       bookCopyService.Updated += OnChanged;
+      loanService.Updated += new EventHandler(OnChangedLoanState);
+      rbActive.CheckedChanged += new EventHandler(OnChangedLoanState);
+      rbReturned.CheckedChanged += new EventHandler(OnChangedLoanState);
+      rbOverdue.CheckedChanged += new EventHandler(OnChangedLoanState);
+
     }
 
     //Observer event
@@ -55,9 +61,44 @@ namespace Library
       ShowAllBooks(bookService.All());
       ShowAllAuthors(authorService.All());
       ShowAllMembers(memberService.All());
-      ShowAllLoans(loanService.All());
     }
-   
+    private void OnChangedLoanState(object sender, EventArgs args)
+    {
+
+      if (rbActive.Checked) {
+        ShowActiveLoans(loanService.GetActiveLoans());
+      } else if (rbOverdue.Checked) {
+        ShowOverdueLoans(loanService.GetOverdueLoans());
+      } else if (rbReturned.Checked) {
+        ShowReturnedLoans(loanService.GetReturnedLoans());
+
+      }
+    }
+    private void ShowActiveLoans(IEnumerable<Loan> loans)
+    {
+      lbLoans.Items.Clear();
+      foreach (Loan loan in loans) {
+        lbLoans.Items.Add(loan);
+
+      }
+    }
+    private void ShowReturnedLoans(IEnumerable<Loan> loans)
+    {
+      lbLoans.Items.Clear();
+      foreach (Loan loan in loans) {
+        lbLoans.Items.Add(loan);
+
+      }
+    }
+    private void ShowOverdueLoans(IEnumerable<Loan> loans)
+    {
+      lbLoans.Items.Clear();
+      foreach (Loan loan in loans) {
+        lbLoans.Items.Add(loan);
+
+      }
+    }
+
     private void ShowAllBooks(IEnumerable<Book> books)
     {
       lbBooks.Items.Clear();
@@ -109,7 +150,6 @@ namespace Library
           Description = abd._Description
         };
         bookService.Add(d);
-        ShowAllBooks(bookService.All());
 
       }
     }
@@ -122,7 +162,6 @@ namespace Library
           Name = aad._Name
         };
         authorService.Add(a);
-        ShowAllAuthors(authorService.All());
       }
     }
 
@@ -135,7 +174,6 @@ namespace Library
           SSN = amd._SSN
         };
         memberService.Add(m);
-        ShowAllMembers(memberService.All());
       }
     }
 
@@ -145,7 +183,6 @@ namespace Library
       if (mld.ShowDialog() == DialogResult.OK) {
 
         loanService.CreateNewLoan(mld._TimeOfLoan, mld._DueDate, mld._LoanBookCopy, mld._LoanMember);
-        ShowAllLoans(loanService.All());
       }
     }
 
@@ -158,14 +195,12 @@ namespace Library
     {
       Book book = (Book)lbBooks.SelectedItem;
       bookCopyService.Add(new BookCopy() { Book = book });
-      ShowAllBooks(bookService.All());
     }
 
     private void btn_Return_Loan_Click(object sender, EventArgs e)
     {
       Loan retrunLoan = (Loan)lbLoans.SelectedItem;
       loanService.ReturnLoanCurrentTime(retrunLoan);
-      ShowAllLoans(loanService.All());
     }
   }
 }
