@@ -6,6 +6,9 @@ using System.Web;
 
 namespace Library.Models
 {
+  /// <summary>  
+  ///  Author object class 
+  /// </summary>  
   public class Author
   {
     [Key]
@@ -14,8 +17,11 @@ namespace Library.Models
     public string Name { get; set; }
     public virtual ICollection<Book> Books { get; set; }
     /// <summary>
-    /// Useful for adding the book objects directly to a ListBox.
+    /// Useful for adding the author objects directly to a ListBox.
     /// </summary>
+    /// <returns>
+    /// A string representation of the object
+    /// </returns>
     public override string ToString()
     {
       return String.Format("{0}", this.Name);

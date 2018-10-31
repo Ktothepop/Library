@@ -6,6 +6,9 @@ using System.Web;
 
 namespace Library.Models
 {
+  /// <summary>  
+  ///  Book object class 
+  /// </summary>  
   public class Book
   {
     [Key]
@@ -19,8 +22,11 @@ namespace Library.Models
     public virtual Author Author { get; set; }
     public virtual ICollection<BookCopy> BookCopies { get; set; }
     /// <summary>
-    /// Useful for adding the book objects directly to a ListBox.
+    /// Useful for adding the Book objects directly to a ListBox.
     /// </summary>
+    /// <returns>
+    /// A string representation of the object
+    /// </returns>
     public override string ToString()
     {
       int bookCopyCount = 0;

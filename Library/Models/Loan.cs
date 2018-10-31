@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Library.Models
 {
+  /// <summary>  
+  ///  Loan object class 
+  /// </summary>  
   public class Loan
   {
     [Key]
@@ -14,24 +17,30 @@ namespace Library.Models
     public DateTime TimeOfLoan { get; set; }
     public DateTime DueDate { get; set; }
     public DateTime? TimeOfReturn { get; set; }
-    public virtual BookCopy BookCopy { get; set; } //Koppling till en (1) specifik BookCopy
-    public virtual Member Member { get; set; } //Koppling till en (1) specifik Member (låntagare)
+    public virtual BookCopy BookCopy { get; set; }
+    public virtual Member Member { get; set; }
 
-        public override string ToString()
-        {
+    /// <summary>
+    /// Useful for adding the Loan objects directly to a ListBox.
+    /// </summary>
+    /// <returns>
+    /// A string representation of the object
+    /// </returns>
+    public override string ToString()
+    {
       string TimeOfReturnTemp = this.TimeOfReturn.HasValue ? this.TimeOfReturn.Value.ToString("yyyy'-'MM'-'dd") : "Not returned";
 
-            return String.Format("{0}", 
-              "Loaned on: " + 
-              this.TimeOfLoan.ToString("yyyy'-'MM'-'dd") + 
-              " | Due Date: " +
-              this.DueDate.ToString("yyyy'-'MM'-'dd") +
-              " | Returned on: " +
-              TimeOfReturnTemp + 
-              " | Member: " + 
-              this.Member.Name + 
-              " | Book: " + 
-              this.BookCopy.Book.Title);
-        }
+      return String.Format("{0}",
+        "Loaned on: " +
+        this.TimeOfLoan.ToString("yyyy'-'MM'-'dd") +
+        " | Due Date: " +
+        this.DueDate.ToString("yyyy'-'MM'-'dd") +
+        " | Returned on: " +
+        TimeOfReturnTemp +
+        " | Member: " +
+        this.Member.Name +
+        " | Book: " +
+        this.BookCopy.Book.Title);
     }
+  }
 }

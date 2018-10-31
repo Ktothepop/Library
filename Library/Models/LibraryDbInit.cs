@@ -9,7 +9,8 @@ namespace Library.Models
 {
   /// <summary>
   /// Database strategy is chosen as the base class to LibraryDbInit.
-  /// Here in the Seed method you can create the default objects you want in the database.
+  /// Creating dummy data in seed 
+  /// Deriving from DropCreateDatabaseAlways<LibraryContext> to create new DB on setup
   /// </summary>
   class LibraryDbInit : DropCreateDatabaseAlways<LibraryContext>
   {
@@ -20,23 +21,23 @@ namespace Library.Models
       //AUTHORS:
 
       Author auth1 = new Author() {
-        Name = "Bitconnect"
+        Name = "Ernest Hernyways"
       };
       context.Authors.Add(auth1);
       Author auth2 = new Author() {
-        Name = "Author nummertwo"
+        Name = "Marc Tween"
       };
       context.Authors.Add(auth2);
       Author auth3 = new Author() {
-        Name = "Min author"
+        Name = "Stephen Queen"
       };
       context.Authors.Add(auth3);
       Author auth4 = new Author() {
-        Name = "Tredje Author"
+        Name = "Virginia Cat"
       };
       context.Authors.Add(auth4);
       Author auth5 = new Author() {
-        Name = "Numero Quatro"
+        Name = "Jennifer Austen"
       };
       context.Authors.Add(auth5);
 
@@ -53,13 +54,13 @@ namespace Library.Models
         Author = auth1
       };
       Book book1 = new Book() {
-        Title = "Tempbook for testning",
+        Title = "The Adventures of Hucklecherry Sinn",
         ISBN = "6432-6153-2312-9559",
         Author = auth4,
-        Description = "Description till bok1"
+        Description = "This is the long description of the book"
       };
       Book book2 = new Book() {
-        Title = "Testybooky spooky skeleton",
+        Title = "Scary Book About Scary Skeletons",
         ISBN = "6431-6153-2312-9559",
         Author = auth4
       };
@@ -73,9 +74,6 @@ namespace Library.Models
         Book = book1
       };
       context.BookCopies.Add(bc1);
-      //När en book copy skapas så ska den också lagras i Book:
-      book1.BookCopies.Add(bc1);
-
 
       BookCopy bc2 = new BookCopy() {
         Book = book1
@@ -91,17 +89,16 @@ namespace Library.Models
 
       //MEMBERS:
       Member Harry = new Member() {
-        Name = "Harry",
+        Name = "Harry Botter",
         SSN = 1337121955
       };
       context.Members.Add(Harry);
       Member Bulba = new Member() {
-        Name = "Bulba",
+        Name = "Bulba Trulba",
         SSN = 123123132
       };
       context.Members.Add(Bulba);
-      //SAVE:
-      context.SaveChanges();
+
       //LOANS:
       Loan lo = new Loan() {
         Member = Harry,
@@ -118,9 +115,11 @@ namespace Library.Models
         TimeOfLoan = new DateTime(2018, 01, 01),
         DueDate = new DateTime(2018, 01, 20)
       };
+
       bc3.IsLoaned = true;
       bc1.IsLoaned = true;
       context.Loans.Add(l1);
+
       context.SaveChanges();
     }
   }

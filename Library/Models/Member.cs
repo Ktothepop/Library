@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Library.Models
 {
+  /// <summary>  
+  ///  Member object class 
+  /// </summary>  
   public class Member
   {
     [Key]
@@ -17,7 +20,13 @@ namespace Library.Models
     public string Name { get; set; }
     public virtual ICollection<Loan> Loans { get; set; }
 
-        public override string ToString()
+    /// <summary>
+    /// Useful for adding the Member objects directly to a ListBox.
+    /// </summary>
+    /// <returns>
+    /// A string representation of the object
+    /// </returns>
+    public override string ToString()
         {
             return String.Format("{0}", this.Name);
         }
