@@ -30,7 +30,7 @@ namespace Library.Models
           bookCopyCount += 1;
         }
       }
-      return String.Format("{0}", this.Title + " | " + bookCopyCount);
+      return String.Format("{0}", this.Title + " | Available Qty: " + bookCopyCount);
     }
   }
 }
