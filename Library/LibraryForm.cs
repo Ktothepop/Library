@@ -76,7 +76,7 @@ namespace Library
             lbLoans.Items.Clear();
             foreach (Loan loan in loans)
             {
-                lbLoans.Items.Add(loan.BookCopy.Book.Title + " | " + loan.Member.Name + " | " + loan.TimeOfLoan + " | " + loan.DueDate);
+                lbLoans.Items.Add(loan);
 
                 
             }
@@ -159,6 +159,13 @@ namespace Library
             Book book = (Book)lbBooks.SelectedItem;
             bookCopyService.Add(new BookCopy() { Book = book});
             ShowAllBooks(bookService.All());
+        }
+
+        private void btn_Return_Loan_Click(object sender, EventArgs e)
+        {
+            Loan retrunLoan = (Loan)lbLoans.SelectedItem;
+            loanService.ReturnLoanCurrentTime(retrunLoan);
+            ShowAllLoans(loanService.All());
         }
     }
 }

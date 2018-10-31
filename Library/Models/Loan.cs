@@ -17,5 +17,9 @@ namespace Library.Models
     public virtual BookCopy BookCopy { get; set; } //Koppling till en (1) specifik BookCopy
     public virtual Member Member { get; set; } //Koppling till en (1) specifik Member (låntagare)
 
-  }
+        public override string ToString()
+        {
+            return String.Format("{0}", this.TimeOfLoan.ToLongDateString() + " | " + this.TimeOfReturn + " | " + this.Member.Name + " | " + this.BookCopy.Book.Title);
+        }
+    }
 }

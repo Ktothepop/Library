@@ -269,6 +269,7 @@
             this.btn_Return_Loan.TabIndex = 21;
             this.btn_Return_Loan.Text = "Return Loan";
             this.btn_Return_Loan.UseVisualStyleBackColor = true;
+            this.btn_Return_Loan.Click += new System.EventHandler(this.btn_Return_Loan_Click);
             // 
             // Tb_Book_Name
             // 
