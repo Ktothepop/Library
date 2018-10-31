@@ -68,6 +68,7 @@ namespace Library.Services
         BookCopy = bc,
         Member = member
       };
+      bc.IsLoaned = true;
       loanRepository.Add(loan);
     }
     //Returns loan at this actual time

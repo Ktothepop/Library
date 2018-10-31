@@ -13,6 +13,7 @@ namespace Library.Models
     public int Id { get; set; }
     [Required]
     public virtual Book Book { get; set; }
+    public Boolean IsLoaned { get; set; } = false;
         public override string ToString()
         {
             return String.Format("{0}", this.Book.Title);

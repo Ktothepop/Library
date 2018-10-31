@@ -140,7 +140,7 @@ namespace Library
 
         private void btn_Create_Loan_Click(object sender, EventArgs e)
         {
-            MakeLoanDialog mld = new MakeLoanDialog(memberService.All(), bookCopyService.All());
+            MakeLoanDialog mld = new MakeLoanDialog(memberService.All(), bookCopyService.GetAvailableBookCopies(loanService.All()));
             if (mld.ShowDialog() == DialogResult.OK)
             {
 

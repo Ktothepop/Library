@@ -17,14 +17,21 @@ namespace Library.Services
     {
       this.bookCopyRepository = rFactory.CreateBookCopyRepository();
     }
-        public IEnumerable<BookCopy> All()
-        {
-            return bookCopyRepository.All();
-        }
-        public void Add(BookCopy bc)
-        {
-            if (bc != null)
-                bookCopyRepository.Add(bc);
-        }
+    public IEnumerable<BookCopy> All()
+    {
+      return bookCopyRepository.All();
     }
+    public void Add(BookCopy bc)
+    {
+      if (bc != null)
+        bookCopyRepository.Add(bc);
+    }
+    public IEnumerable<BookCopy> GetAvailableBookCopies(IEnumerable<Loan> loans)
+    {
+      return from bc in bookCopyRepository.All()
+             where bc.IsLoaned == false
+             select bc;
+      
+    }
+  }
 }

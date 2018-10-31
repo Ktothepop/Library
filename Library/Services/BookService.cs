@@ -48,7 +48,7 @@ namespace Library.Services
              select b;
     }
 
-
+    
 
     //Adds the book copy to the book
     public void BookCopyAdded(Book b, BookCopy bc)

@@ -83,47 +83,45 @@ namespace Library.Models
       context.BookCopies.Add(bc2);
 
       BookCopy bc3 = new BookCopy() {
-        Book = BarryPotter
+        Book = BarryPotter,
       };
       context.BookCopies.Add(bc3);
 
-            
 
-            //MEMBERS:
-            Member Harry = new Member()
-            {
-                Name = "Harry",
-                SSN = 1337121955
-            };
-            context.Members.Add(Harry);
-            Member Bulba = new Member()
-            {
-                Name="Bulba",
-                SSN = 123123132
-            };
-            context.Members.Add(Bulba);
+
+      //MEMBERS:
+      Member Harry = new Member() {
+        Name = "Harry",
+        SSN = 1337121955
+      };
+      context.Members.Add(Harry);
+      Member Bulba = new Member() {
+        Name = "Bulba",
+        SSN = 123123132
+      };
+      context.Members.Add(Bulba);
       //SAVE:
       context.SaveChanges();
-            //LOANS:
-            Loan lo = new Loan()
-            {
-                Member = Harry,
-                BookCopy = bc3,
-                TimeOfLoan = new DateTime(2017, 10, 10),
-                DueDate = new DateTime(2017, 10, 25),
-                TimeOfReturn = DateTime.Now
-            };
-            
-            context.Loans.Add(lo);
-            Loan l1 = new Loan()
-            {
-                Member = Bulba,
-                BookCopy = bc1,
-                TimeOfLoan = new DateTime(2018, 01, 01),
-                DueDate = new DateTime(2018, 01, 20)
-            };
-            context.Loans.Add(l1);
-            context.SaveChanges();
-        }
+      //LOANS:
+      Loan lo = new Loan() {
+        Member = Harry,
+        BookCopy = bc3,
+        TimeOfLoan = new DateTime(2017, 10, 10),
+        DueDate = new DateTime(2017, 10, 25),
+        TimeOfReturn = DateTime.Now
+      };
+
+      context.Loans.Add(lo);
+      Loan l1 = new Loan() {
+        Member = Bulba,
+        BookCopy = bc1,
+        TimeOfLoan = new DateTime(2018, 01, 01),
+        DueDate = new DateTime(2018, 01, 20)
+      };
+      bc3.IsLoaned = true;
+      bc1.IsLoaned = true;
+      context.Loans.Add(l1);
+      context.SaveChanges();
     }
+  }
 }
