@@ -8,23 +8,33 @@ using System.Threading.Tasks;
 
 namespace Library.Services
 {
-    class AuthorService
-    {
-        AuthorRepository authorRepository;
+  class AuthorService : IService
+  {
+    AuthorRepository authorRepository;
 
-        public AuthorService(RepositoryFactory rFactory)
-        {
-            this.authorRepository = rFactory.CreateAuthorRepository();
-        }
-        public IEnumerable<Author> All()
-        {
-            return authorRepository.All();
-        }
-        public void Add(Author a)
-        {
-            if (a != null)
-                authorRepository.Add(a);
-        }
+    public event EventHandler Updated;
+
+    public AuthorService(RepositoryFactory rFactory)
+    {
+      this.authorRepository = rFactory.CreateAuthorRepository();
     }
+
+    protected virtual void OnChanged(EventArgs args)
+    {
+      Updated?.Invoke(this, args);
+    }
+
+    public IEnumerable<Author> All()
+    {
+      return authorRepository.All();
+    }
+    public void Add(Author a)
+    {
+      if (a != null) {
+        authorRepository.Add(a);
+        OnChanged(EventArgs.Empty);
+      }
+    }
+  }
 
 }

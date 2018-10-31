@@ -8,17 +8,24 @@ using System.Threading.Tasks;
 
 namespace Library.Services
 {
-  class BookService
+  class BookService : IService
   {
     /// <summary>
     /// service doesn't need a context but it needs a repository.
     /// </summary>
     BookRepository bookRepository;
 
+    public event EventHandler Updated;
+
     /// <param name="rFactory">A repository factory, so the service can create its own repository.</param>
     public BookService(RepositoryFactory rFactory)
     {
       this.bookRepository = rFactory.CreateBookRepository();
+    }
+
+    protected virtual void OnChanged(EventArgs args)
+    {
+      Updated?.Invoke(this, args);
     }
 
     public IEnumerable<Book> All()
@@ -27,11 +34,11 @@ namespace Library.Services
     }
 
     public Book GetBookById(int id)
-        {
-            return (from b in bookRepository.All()
-                    where b.Id == id
-                    select b).First();
-        }
+    {
+      return (from b in bookRepository.All()
+              where b.Id == id
+              select b).First();
+    }
 
     public IEnumerable<Book> GetAllThatContainsInTitle(string a)
     {
@@ -48,7 +55,7 @@ namespace Library.Services
              select b;
     }
 
-    
+
 
     //Adds the book copy to the book
     public void BookCopyAdded(Book b, BookCopy bc)
@@ -56,19 +63,25 @@ namespace Library.Services
       if (b != null && bc != null) {
         b.BookCopies.Add(bc);
         bookRepository.Edit(b);
+        OnChanged(EventArgs.Empty);
       }
-
     }
 
     public void Add(Book b)
     {
-      if (b != null)
+      if (b != null) {
         bookRepository.Add(b);
+        OnChanged(EventArgs.Empty);
+      }
+
     }
     public void Remove(Book b)
     {
-      if (b != null)
+      if (b != null) {
         bookRepository.Remove(b);
+        OnChanged(EventArgs.Empty);
+      }
+
     }
     /// <summary>
     /// The Edit method makes sure that the given Book object is saved to the database and raises the Updated() event.
@@ -76,9 +89,11 @@ namespace Library.Services
     /// <param name="b"></param>
     public void Edit(Book b)
     {
-      if (b != null)
+      if (b != null) {
         bookRepository.Edit(b);
-      // TODO: Raise the Updated event.
+        OnChanged(EventArgs.Empty);
+      }
+        
     }
 
   }
